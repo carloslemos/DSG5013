@@ -1,14 +1,14 @@
-import { fetchJSON } from './utils';
+import fetchJSON from './utils';
 
 export default function main() {
-    const mainDIV = document.getElementById('main')
+  const mainDIV = document.getElementById('main');
 
-    fetchJSON('./data/data.json', (data) => {
-        data.forEach(item => {
-            const { text, autor, obra, topicos } = item;
-            const section = document.createElement('section');
+  fetchJSON('./data/data.json', (data) => {
+    data.forEach((item) => {
+      const { text, autor, obra, topicos } = item;
+      const section = document.createElement('section');
 
-            section.innerHTML = `
+      section.innerHTML = `
                 <div class="dayentry__wrapper">
                     <p class="dayentry__text">${text}</p>
                     <blockquote class="dayentry__quote">
@@ -18,28 +18,28 @@ export default function main() {
                 </div>
             `;
 
-            section.classList.add('dayentry');
-            
-            mainDIV.appendChild(section);
-        });
+      section.classList.add('dayentry');
+
+      mainDIV.appendChild(section);
     });
+  });
 
-    const navDown = document.getElementById('up');
-    const navUp = document.getElementById('down');
+  const navDown = document.getElementById('up');
+  const navUp = document.getElementById('down');
 
-    navUp.addEventListener('click', () => {
-        const { innerHeight } = window;
-        mainDIV.scrollBy({
-            top: innerHeight,
-            behavior: 'smooth',
-        });
+  navUp.addEventListener('click', () => {
+    const { innerHeight } = window;
+    mainDIV.scrollBy({
+      top: innerHeight,
+      behavior: 'smooth'
     });
+  });
 
-    navDown.addEventListener('click', () => {
-        const { innerHeight } = window;
-        mainDIV.scrollBy({
-            top: -innerHeight,
-            behavior: 'smooth',
-        });
-    })
+  navDown.addEventListener('click', () => {
+    const { innerHeight } = window;
+    mainDIV.scrollBy({
+      top: -innerHeight,
+      behavior: 'smooth'
+    });
+  });
 }

@@ -1,4 +1,4 @@
 import './styles/main.scss';
-import main from './scripts/main'
+import main from './scripts/main';
 
 main();

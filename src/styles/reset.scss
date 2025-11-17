@@ -1,5 +1,7 @@
 /* Universal box-sizing for consistent layout */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -16,12 +18,15 @@ a {
 }
 
 /* Remove default list styles (bullets, numbers) */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 /* Reset default button appearance for easier custom styling */
-button, input[type="submit"], input[type="reset"] {
+button,
+input[type='submit'],
+input[type='reset'] {
   background: none;
   border: none;
   font: inherit;
@@ -29,7 +34,11 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 /* Ensure images and media are responsive */
-img, video, iframe, canvas, object {
+img,
+video,
+iframe,
+canvas,
+object {
   max-width: 100%;
   display: block; /* Prevents extra space below images */
 }
