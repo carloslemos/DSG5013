@@ -4,6 +4,7 @@
   "description": "Boilerplate Webpack + Sass + Pug + Babel",
   "scripts": {
     "start": "npm run dev",
+    "convert": "node ./actions/convert.mjs",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
@@ -21,5 +22,8 @@
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0"
   }
 }
