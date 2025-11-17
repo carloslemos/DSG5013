@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -51,6 +54,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/templates/index.html'
-    })
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/data', to: 'data' }
+      ]
+    }),
+
+    new webpack.HotModuleReplacementPlugin()
   ]
 };

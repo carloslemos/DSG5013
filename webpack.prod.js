@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -45,6 +46,12 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css'
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/data/data.json', to: 'data/data.json' }
+      ]
     }),
 
     new HtmlWebpackPlugin({
