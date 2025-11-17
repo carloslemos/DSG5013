@@ -1,42 +1,46 @@
-@use "./utils" as utils;
+@use './utils' as utils;
 
 .navigation {
-    display: flex;
-    position: fixed;
-    height: 100vh;
-    width: utils.rem(40);
-    top: 0;
-    right: 0;
-    z-index: 100;
-    align-items: center;
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  width: utils.rem(40);
+  top: 0;
+  right: 0;
+  z-index: 100;
+  align-items: center;
 }
 
 .navigation__list {
-    display: block;
+  display: block;
 }
 
 .navigation__button {
-    display: block;
-    font-size: utils.rem(24);
-    line-height: utils.rem(24);
-    padding: utils.rem(6);
-    text-align: center;
-    text-decoration: none;
-    width: utils.rem(36);
-    height: utils.rem(36);
-    background-color: var(--ocean);
-    color: var(--sand);
-    border-radius: 50%;
+  display: block;
+  font-size: utils.rem(24);
+  line-height: utils.rem(24);
+  padding: utils.rem(6);
+  text-align: center;
+  text-decoration: none;
+  width: utils.rem(36);
+  height: utils.rem(36);
+  background-color: var(--ocean);
+  color: var(--sand);
+  border-radius: 50%;
 
-    &--like {
-        font-size: utils.rem(20);
-    }
+  &--like {
+    font-size: utils.rem(20);
+  }
 
-    & + .navigation__button {
-        margin-top: utils.rem(5);
-    }
+  &--hidden {
+    display: none;
+  }
+
+  & + .navigation__button {
+    margin-top: utils.rem(5);
+  }
 }
 
 .navigation__arrow {
-    text-decoration: none;
+  text-decoration: none;
 }
