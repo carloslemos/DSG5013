@@ -1,0 +1,35 @@
+/* Universal box-sizing for consistent layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding from all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default text decoration and set a base color for links */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent, or set a specific default */
+}
+
+/* Remove default list styles (bullets, numbers) */
+ul, ol {
+  list-style: none;
+}
+
+/* Reset default button appearance for easier custom styling */
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Ensure images and media are responsive */
+img, video, iframe, canvas, object {
+  max-width: 100%;
+  display: block; /* Prevents extra space below images */
+}

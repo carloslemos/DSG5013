@@ -1,0 +1,26 @@
+@use "./utils" as utils;
+
+.dayentry {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.dayentry__wrapper {
+    position: absolute;
+    width: utils.rem(720);
+    max-width: 100%;
+    padding: utils.rem(32) utils.rem(72) utils.rem(32) utils.rem(32);
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dayentry__author {
+    font-weight: 600;
+}
+
+.dayentry__quote {
+    margin-top: utils.rem(16);
+}
