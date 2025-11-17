@@ -1,9 +1,9 @@
 import { fetchJSON } from './utils';
 
 export default function main() {
+    const mainDIV = document.getElementById('main')
+
     fetchJSON('./data/data.json', (data) => {
-        const mainDIV = document.getElementById('main')
-        
         data.forEach(item => {
             const { text, autor, obra, topicos } = item;
             const section = document.createElement('section');
@@ -23,4 +23,23 @@ export default function main() {
             mainDIV.appendChild(section);
         });
     });
+
+    const navDown = document.getElementById('up');
+    const navUp = document.getElementById('down');
+
+    navUp.addEventListener('click', () => {
+        const { innerHeight } = window;
+        mainDIV.scrollBy({
+            top: innerHeight,
+            behavior: 'smooth',
+        });
+    });
+
+    navDown.addEventListener('click', () => {
+        const { innerHeight } = window;
+        mainDIV.scrollBy({
+            top: -innerHeight,
+            behavior: 'smooth',
+        });
+    })
 }
