@@ -1,18 +1,28 @@
+import bindNav from './../bindNav';
+
 export default function readData(data) {
   const mainDIV = document.getElementById('main');
 
   // random picks Array
-  const finalList = [];
-  let pickIndex = Math.round(data.length * Math.random());
-  finalList.push(pickIndex);
-
-  while (finalList.length < data.length) {
-    const pickElement = data[pickIndex];
-    const related = [...pickElement.relations].filter((item) => !finalList.includes(item.target));
-    related.sort((a, b) => b.weight - a.weight);
-    pickIndex = Number(related[0].target);
-    console.log(pickIndex, related[0].weight);
+  let finalList;
+  
+  if (!localStorage.getItem('finalList')) {
+    finalList = [];
+    let pickIndex = Math.round(data.length * Math.random());
     finalList.push(pickIndex);
+
+    while (finalList.length < data.length) {
+      const pickElement = data[pickIndex];
+      const related = [...pickElement.relations].filter((item) => !finalList.includes(item.target));
+      related.sort((a, b) => b.weight - a.weight);
+      pickIndex = Number(related[0].target);
+      console.log(pickIndex, related[0].weight);
+      finalList.push(pickIndex);
+    }
+
+    localStorage.setItem('finalList', JSON.stringify(finalList));
+  } else {
+    finalList = JSON.parse(localStorage.getItem('finalList'));
   }
 
   // prints Data
@@ -34,6 +44,6 @@ export default function readData(data) {
 
     mainDIV.appendChild(section);
 
-    console.log(item, text, autor, obra, topicos);
+    bindNav();
   });
 }
