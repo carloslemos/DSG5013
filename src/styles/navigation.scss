@@ -32,6 +32,10 @@
     font-size: utils.rem(20);
   }
 
+  &--hidden {
+    display: none;
+  }
+
   & + .navigation__button {
     margin-top: utils.rem(5);
   }
