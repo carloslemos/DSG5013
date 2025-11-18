@@ -10,7 +10,7 @@
 ## Dia 18
 
 * [x] - Criação de link público e QR code para a apresentação - até 10h
-* [ ] - Criar algoritmo de reeordenação dos textos até 15h
+* [ ] - Criar algoritmo de reeordenação dos textos até 18h
 * [ ] - Acabamento gráfico tal qual a apresentação até 20h
 
 ## Dia 19

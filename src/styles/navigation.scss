@@ -24,9 +24,9 @@
   text-decoration: none;
   width: utils.rem(36);
   height: utils.rem(36);
-  background-color: var(--ocean);
-  color: var(--sand);
-  border-radius: 50%;
+  background-color: var(--ocean-fade);
+  color: var(--ocean);
+  border-radius: utils.rem(8);
 
   &--like {
     font-size: utils.rem(20);
