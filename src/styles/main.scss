@@ -18,4 +18,8 @@ main {
   font-style: normal;
   background-color: var(--sand);
   color: var(--ocean);
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.85em;
+  }
 }

@@ -4,15 +4,43 @@ export default class App {
   constructor(data) {
     this.data = data;
     this.container = document.getElementById('main');
+    this.time = {
+      start: 0,
+      end: 0
+    };
+  }
+
+  // resolve o tempo de leitura
+  endReadCurrent() {
+    this.time.end = new Date();
+    const current = this.data[this.finalList[this.navPosition]];
+    current.readByUser = this.time.end.getTime() - this.time.start.getTime();
+    current.isRead = true;
+    current.readCompletion = current.readByUser / current.readTime;
   }
 
   pickNext() {
+    this.endReadCurrent();
     const current = this.data[this.finalList[this.navPosition]];
+
+    // recorta os 5 tópicos com mais relação ao post atual
     const sortPot = [...current.relations]
       .filter(
         (item) => !this.finalList.includes(item.target) // eslint-disable-line
       )
       .slice(0, 5);
+
+    // melhora os resultados de todos os recortados em todos textos em caso de 50% de leitura ou mais
+    if (current.readCompletion > 0.5) {
+      this.data.forEach((item) => {
+        item.relations
+          .filter((relation) => sortPot.includes(relation.target))
+          .forEach((relation) => {
+            const element = relation;
+            element.weight += Math.min(0.2, 0.2 * current.readCompletion);
+          });
+      });
+    }
 
     const pickIndex = Math.floor((sortPot.length - 1) * Math.random());
     const { target } = sortPot[pickIndex];
@@ -20,7 +48,7 @@ export default class App {
     this.finalList.push(target);
     localStorage.setItem('finalList', JSON.stringify(this.finalList));
 
-    console.log('adicionou', this.data[target]);
+    // console.log('adicionou', this.data[target]);
   }
 
   bindNav() {
@@ -56,6 +84,8 @@ export default class App {
 
     navPrevious.addEventListener('click', () => {
       if (this.navPosition > 0) {
+        const current = this.data[this.finalList[this.navPosition]];
+        if (!current.isRead) this.endReadCurrent();
         this.navPosition -= 1;
         this.container.scrollTo({
           top: height * this.navPosition,
@@ -76,6 +106,9 @@ export default class App {
       item.DOMElement.classList.add('dayentry');
 
       relations.sort((a, b) => b.weight - a.weight);
+
+      item.readTime = text.length * 100;
+      item.isRead = false;
     });
 
     if (!localStorage.getItem('finalList')) {
@@ -85,6 +118,8 @@ export default class App {
     } else {
       this.finalList = JSON.parse(localStorage.getItem('finalList'));
     }
+
+    this.time.start = new Date();
 
     [...this.finalList]
       .map((key) => this.data[key])
