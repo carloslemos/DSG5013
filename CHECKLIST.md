@@ -11,7 +11,7 @@
 
 * [x] - Criação de link público e QR code para a apresentação - até 10h
 * [x] - Acabamento gráfico tal qual a apresentação
-* [ ] - Criar algoritmo de reeordenação dos textos
+* [x] - Criar algoritmo de reeordenação dos textos
 
 ## Dia 19
 

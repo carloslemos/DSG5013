@@ -54,6 +54,7 @@ export default class App {
   bindNav() {
     const navPrevious = document.getElementById('up');
     const navNext = document.getElementById('down');
+    const navStats = document.getElementById('stats');
     const { height } = this.container.getBoundingClientRect();
 
     this.navPosition = !localStorage.getItem('navPosition')
@@ -93,6 +94,12 @@ export default class App {
         });
         localStorage.setItem('navPosition', this.navPosition);
       }
+    });
+
+    // botão de estatísticas
+    navStats.addEventListener('click', () => {
+      const DOMconsole = document.getElementById('console');
+      DOMconsole.classList.remove('stats--hidden');
     });
   }
 
