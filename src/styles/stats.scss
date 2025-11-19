@@ -1,0 +1,47 @@
+@use './utils' as utils;
+
+.stats {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: var(--ocean-shade);
+  z-index: 1000000;
+  visibility: visible;
+  opacity: 1;
+  color: var(--sand);
+  transition:
+    visibility 0.3s,
+    opacity 0.3s;
+
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.stats__table {
+  padding: utils.rem(20);
+  width: 100%;
+  font-size: 0.6em;
+  text-align: left;
+
+  td,
+  th {
+    padding: utils.rem(1) utils.rem(6);
+    margin: 0;
+  }
+
+  td {
+    border-top: utils.rem(1) dotted var(--sand-fade);
+  }
+
+  td,
+  th {
+    & + td,
+    & + th {
+      border-left: utils.rem(1) dotted var(--sand-fade);
+    }
+  }
+}

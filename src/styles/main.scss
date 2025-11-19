@@ -1,11 +1,18 @@
 @use './reset';
 @use './dayentry';
 @use './navigation';
+@use './stats';
 
 :root {
   --sand: #fffcea;
+  --sand-fade: #fffcea66;
   --ocean: #0f4f8f;
   --ocean-fade: #0f4f8f66;
+  --ocean-shade: #0f4f8fe0;
+}
+
+body {
+  position: relative;
 }
 
 main {
